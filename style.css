@@ -1,0 +1,177 @@
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+p {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0078d7;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* Input Section */
+.todo-input-grid {
+  display: flex;
+  gap: 15px;
+  margin: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+}
+
+.name-input,
+.due-date-input {
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  flex-grow: 1;
+  max-width: 300px;
+}
+
+.name-input:focus,
+.due-date-input:focus {
+  border-color: #0078d7;
+  outline: none;
+  box-shadow: 0px 0px 10px rgba(0, 120, 215, 0.3);
+}
+
+.add-todo-button {
+  padding: 12px 25px;
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-todo-button:hover {
+  background-color: #005a9e;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 90, 158, 0.3);
+}
+
+/* Todo List Items */
+.todo-grid {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.js-todo-list .todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.js-todo-list .todo-item:hover {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.js-todo-list .todo-item p {
+  margin: 0;
+  flex: 1;
+  font-size: 1.2rem;
+}
+
+/* Delete Button */
+.js-todo-list .todo-item button {
+  background-color: #ff3b3b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.js-todo-list .todo-item button:hover {
+  background-color: #d32f2f;
+  box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  /* For tablets */
+  .todo-input-grid {
+    gap: 10px;
+  }
+
+  .name-input,
+  .due-date-input {
+    max-width: 200px;
+    font-size: 1rem;
+  }
+
+  .add-todo-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .js-todo-list .todo-item {
+    font-size: 1rem;
+    padding: 12px 15px;
+  }
+
+  .js-todo-list .todo-item button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* For phones */
+  .todo-input-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .name-input,
+  .due-date-input,
+  .add-todo-button {
+    width: 100%;
+  }
+
+  .js-todo-list .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .js-todo-list .todo-item button {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+}
