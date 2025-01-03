@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .typing-test {
+      text-align: center;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .text {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .text span {
+      padding: 0 2px;
+    }
+    .text .correct {
+      color: green;
+    }
+    .text .incorrect {
+      color: red;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .results {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="typing-test">
+    <div class="text" id="text"></div>
+    <input type="text" id="input" placeholder="Start typing here...">
+    <div class="results" id="results"></div>
+  </div>
+
+  <script>
+    const sampleText = "Practice makes perfect. Keep typing to improve your speed.";
+    const textElement = document.getElementById("text");
+    const inputElement = document.getElementById("input");
+    const resultsElement = document.getElementById("results");
+
+    let currentIndex = 0;
+    let startTime = null;
+
+    // Display the sample text
+    function displayText() {
+      textElement.innerHTML = sampleText
+        .split("")
+        .map((char, index) => `<span id="char-${index}">${char}</span>`)
+        .join("");
+    }
+
+    // Handle input typing
+    inputElement.addEventListener("input", () => {
+      if (!startTime) startTime = new Date();
+
+      const inputValue = inputElement.value;
+      currentIndex = inputValue.length - 1;
+
+      Array.from(sampleText).forEach((char, index) => {
+        const charElement = document.getElementById(`char-${index}`);
+        if (index < inputValue.length) {
+          if (inputValue[index] === char) {
+            charElement.classList.add("correct");
+            charElement.classList.remove("incorrect");
+          } else {
+            charElement.classList.add("incorrect");
+            charElement.classList.remove("correct");
+          }
+        } else {
+          charElement.classList.remove("correct", "incorrect");
+        }
+      });
+
+      // Check if the text is complete
+      if (inputValue === sampleText) {
+        const endTime = new Date();
+        const timeTaken = (endTime - startTime) / 1000; // in seconds
+        const words = sampleText.split(" ").length;
+        const wpm = Math.round((words / timeTaken) * 60);
+
+        resultsElement.textContent = `Completed in ${timeTaken.toFixed(2)} seconds. Words per minute: ${wpm} WPM.`;
+        inputElement.disabled = true;
+      }
+    });
+
+    displayText();
+  </script>
+</body>
+</html>
