@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Enter you name" id="input" />
+    <p id="miso"></p>
+    <button onclick="misoBtn()">Submit</button>
+    <button onclick="deleteMisoBtn()">Delete</button>
+    <button onclick="BigMisoBtn()">Big</button>
+    <button onclick="red()">Red</button>
+    <script>
+      function misoBtn() {
+        let a = document.getElementById("input").value;
+        let b = document.getElementById("miso");
+        b.innerHTML = a;
+      }
+      function deleteMisoBtn() {
+        document.getElementById("miso").remove();
+      }
+      function BigMisoBtn() {
+        const demo = document.getElementById("miso");
+        demo.style.fontSize = "40px";
+      }
+      function red() {
+        const red = document.getElementById("miso");
+        miso.style.color = "red";
+      }
+    </script>
+  </body>
+</html>
